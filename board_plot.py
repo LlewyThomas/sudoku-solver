@@ -34,7 +34,7 @@ class BoardPlot:
         self.puzzle = puzzle
 
 
-    def plot_empty_board(self):
+    def draw(self):
         """
         Plot the empty puzzle with grid lines.
         """
@@ -60,12 +60,30 @@ class BoardPlot:
         # Remove label
         self.ax.set_xlabel('')
         self.ax.set_ylabel('')
+
+        # Add puzzle values
+        for row in range(9):
+            for col in range(9):
+                if self.puzzle[row][col] != 0:
+                    self.ax.text(row+0.5, col+0.54, str(self.puzzle[i][j]), ha='center', va='center', fontsize=16)
         
         return self.fig, self.ax
 
 
 if __name__ == "__main__":
     
-    # Plot empty puzzle
-    fig, ax = BoardPlot([[0]*9 for _ in range(9)]).plot_empty_board()
+    # A valid input sudoku puzzle
+    puzzle = [[5,3,0,0,7,0,0,0,0],
+              [6,0,0,1,9,5,0,0,0],
+              [0,9,8,0,0,0,0,6,0],
+              [8,0,0,0,6,0,0,0,3],
+              [4,0,0,8,0,3,0,0,1],
+              [7,0,0,0,2,0,0,0,6],
+              [0,6,0,0,0,0,2,8,0],
+              [0,0,0,4,1,9,0,0,5],
+              [0,0,0,0,8,0,0,7,9]]
+
+
+    # Plot puzzle
+    fig, ax = BoardPlot(puzzle).draw()
     plt.show() 
