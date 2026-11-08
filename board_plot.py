@@ -65,7 +65,7 @@ class BoardPlot:
         for row in range(9):
             for col in range(9):
                 if self.puzzle[row][col] != 0:
-                    self.ax.text(row+0.5, col+0.54, str(self.puzzle[i][j]), ha='center', va='center', fontsize=16)
+                    self.ax.text(col+0.5, row+0.5, str(self.puzzle[row][col]), ha='center', va='center', fontsize=16)
         
         return self.fig, self.ax
 
