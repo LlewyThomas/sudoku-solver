@@ -5,32 +5,8 @@ class BoardPlot:
     """
     Class for plotting sudoku boards.
     """
-
+        
     def __init__(self, puzzle):
-        """
-        Initialize the BoardPlot object.
-        
-        Args:
-            puzzle (list): 9x9 list of lists representing the sudoku board.
-        """
-
-        # Validate puzzle type
-        if not isinstance(puzzle, list):
-            raise TypeError("Input puzzle must be a list.")
-        
-        # Validate puzzle dimensions
-        if len(puzzle) != 9:
-            raise ValueError("Input puzzle must have 9 rows.")
-        for row in puzzle:
-            if len(row) != 9:
-                raise ValueError("Input puzzle must have 9 columns.")
-                
-            # Each value must be an integer between 0 and 9 (inclusive)                
-            for value in row:
-                if not isinstance(value, int) or value < 0 or value > 9:
-                    raise ValueError("Each value must be an integer between 0 and 9 (inclusive).")
-
-        # Store puzzle
         self.puzzle = puzzle
 
 
@@ -68,7 +44,6 @@ class BoardPlot:
                     self.ax.text(col+0.5, row+0.5, str(self.puzzle[row][col]), ha='center', va='center', fontsize=16)
         
         return self.fig, self.ax
-
 
 if __name__ == "__main__":
     
